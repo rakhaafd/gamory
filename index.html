@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamory</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="public/icon/logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Gamory.</h1>
+        <div class="nav-links">
+            <a href="#" id="homeLink">Home</a>
+            <a href="#" id="aboutLink">About</a>
+            <a href="#" id="gamesLink">Games</a>
+            <a href="#" id="testimonyLink">Testimony</a>
+            <a href="#" id="contactLink">Contact</a>
+            <a href="#" id="cartLink">Cart</a>
+            <a href="#" id="loginLink">Login</a>
+            <a href="#" id="logoutLink" style="display: none;">Logout</a>
+        </div>
+    </nav>
+
+    <div id="homeSection">
+        <!-- Hero Section -->
+        <section class="hero">
+            <video autoplay loop muted playsinline>
+                <source src="assets/video/snaptik_7462511239516753157 (1).mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-overlay"></div>
+            <h1>Welcome to Gamory.</h1>
+            <p>Discover the best PC games at unbeatable prices. Start your gaming adventure today!</p>
+            <button onclick="document.getElementById('featuredGames').scrollIntoView({behavior: 'smooth'})">Browse Games</button>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="about-content">
+                <h2>About Gamory</h2>
+                <p>Gamory is your one-stop destination for the latest and greatest PC games. We are passionate about gaming and committed to providing you with an exceptional shopping experience. Explore our vast collection and join our community of gamers today!</p>
+            </div>
+            <img src="public/icon/logo.png" class="about-image">
+        </section>
+
+        <!-- Featured Games Section -->
+        <section class="container" id="featuredGames">
+            <h2>Featured Games</h2>
+            <div class="products-grid" id="productsGrid"></div>
+            <p id="fetchError" class="status-message error-message" style="display: none;"></p>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Gamory has an amazing selection of games at great prices. The checkout process was smooth and fast!"</p>
+                    <h4>- Alex Johnson</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"I love the user-friendly interface and quick delivery. My go-to place for PC games!"</p>
+                    <h4>- Sarah Lee</h4>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Fantastic customer service and a huge variety of games. Highly recommend Gamory!"</p>
+                    <h4>- Michael Chen</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <p>Have questions? Get in touch with us!</p>
+            <div class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button>Send Message</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="loginSection" class="login-section" style="display: none;">
+        <div class="login-card">
+            <h2>Login to Gamory</h2>
+            <p class="subtitle">Join the adventure!</p>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button id="loginBtn">Login</button>
+            <p id="loginStatus" class="status-message"></p>
+        </div>
+    </div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <button class="close-cart" id="closeCart">Close</button>
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+        <div class="cart-total" id="cartTotal">Total: $0.00</div>
+        <button class="checkout-btn" id="checkoutBtn" style="display: none;">Checkout</button>
+    </div>
+
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="modal-content">
+            <h2>Processing Your Order</h2>
+            <div class="checkout-step" id="stepCheckout">
+                <span>Initiating Checkout</span>
+                <span class="loader"></span>
+            </div>
+            <div class="checkout-step" id="stepPayment">
+                <span>Processing Payment</span>
+                <span class="loader"></span>
+            </div>
+            <div class="checkout-step" id="stepComplete">
+                <span>Completing Payment</span>
+                <span class="loader"></span>
+            </div>
+            <div class="checkout-step" id="stepShipping">
+                <span>Preparing Shipping</span>
+                <span class="loader"></span>
+            </div>
+            <p id="modalStatus" class="status-message"></p>
+            <button class="modal-close" id="modalClose" style="display: none;">Close</button>
+        </div>
+    </div>
+
+    <div class="game-modal" id="gameModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">×</span>
+            <img id="modalImage" src="" alt="Game Image" class="w-full h-80 object-cover rounded-lg">
+            <div class="title-price">
+                <h3 id="modalTitle" class="text-2xl font-bold"></h3>
+                <span id="modalPrice" class="price"></span>
+            </div>
+            <div id="modalLabels" class="labels"></div>
+            <div id="modalContent" class="description"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Gamory. All rights reserved.</p>
+    </footer>
+</body>
+</html>

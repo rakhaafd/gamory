@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Red Dead Redemption 2",
+    "price": 59.99,
+    "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1174180/capsule_616x353.jpg?t=1720558643",
+    "labels": ["Action", "Western"],
+    "description": "Red Dead Redemption 2 adalah game aksi-petualangan berlatar Amerika pada akhir abad ke-19. Kamu akan berperan sebagai Arthur Morgan, seorang anggota geng Van der Linde yang harus bertahan hidup di dunia yang keras dan penuh konflik. Game ini menampilkan dunia terbuka yang sangat luas, cerita yang emosional, dan interaksi karakter yang mendalam."
+  },
+  {
+    "id": 2,
+    "name": "Persona 5 Royal",
+    "price": 49.99,
+    "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1687950/capsule_616x353.jpg?t=1733297467",
+    "labels": ["JRPG", "Turn-Based"],
+    "description": "Persona 5 Royal adalah versi penyempurnaan dari game JRPG populer Persona 5. Kamu akan memainkan peran seorang siswa SMA di Tokyo yang menjalani kehidupan ganda sebagai Phantom Thief. Dengan sistem pertarungan turn-based yang strategis dan cerita yang dalam, game ini menggabungkan kehidupan sosial dengan eksplorasi dunia bawah sadar yang unik."
+  },
+  {
+    "id": 3,
+    "name": "Elden Ring: Nightreign",
+    "price": 69.99,
+    "image": "https://i.ytimg.com/vi_webp/ZotjeX4QjYQ/maxresdefault.webp",
+    "labels": ["Action RPG", "Fantasy", "Co-Op"],
+    "description": "Elden Ring: Nightreign menghadirkan dunia fantasi gelap yang luas dengan eksplorasi bebas, pertarungan yang menantang, dan cerita yang dalam. Diciptakan oleh FromSoftware dan dikembangkan bersama penulis George R.R. Martin, game ini memungkinkan pemain menjelajahi wilayah luas dan bertempur melawan bos epik, baik sendiri maupun bersama teman."
+  },
+  {
+    "id": 4,
+    "name": "Dark Souls III",
+    "price": 39.99,
+    "image": "https://image.api.playstation.com/cdn/HP0700/CUSA03434_00/8h7cWRisC1eoKS3dNjsSt7bMM59QDsJhh2VpJ5v0j18T57tUOabxc3QaG8A5HAJw.png",
+    "labels": ["Action RPG", "Dark Fantasy"],
+    "description": "Dark Souls III adalah game aksi RPG dengan atmosfer gelap dan mekanisme pertarungan yang intens. Pemain akan menjelajahi dunia yang penuh reruntuhan, makhluk menyeramkan, dan bos raksasa. Setiap keputusan penting dan tiap pertarungan membutuhkan strategi serta ketepatan waktu yang tinggi."
+  },
+  {
+    "id": 5,
+    "name": "Black Myth Wukong",
+    "price": 29.99,
+    "image": "https://mobilenation.id/frontend/uploads/2024/08/b953669ef021ee34653eb6257d65c198.png",
+    "labels": ["Action RPG", "Soulslike"],
+    "description": "Black Myth: Wukong adalah game action RPG yang terinspirasi dari legenda Tiongkok 'Perjalanan ke Barat'. Kamu akan mengendalikan Sun Wukong, Raja Monyet, dengan kemampuan transformasi dan sihir. Game ini menyajikan pertarungan intens, desain dunia yang indah, dan cerita epik dalam gaya Soulslike yang menantang."
+  },
+  {
+    "id": 6,
+    "name": "Devil May Cry 5",
+    "price": 29.99,
+    "image": "https://nxgindonesia.or.id/wp-content/uploads/2024/09/maxresdefault-8.jpg",
+    "labels": ["Action", "Hack and Slash"],
+    "description": "Devil May Cry 5 merupakan game aksi bergaya hack and slash dengan gaya bertarung yang stylish dan cepat. Pemain dapat memilih dari tiga karakter unik dengan kemampuan berbeda untuk melawan gerombolan iblis dalam cerita penuh aksi sinematik. Dengan visual menawan dan gameplay cepat, ini adalah puncak dari seri Devil May Cry."
+  }
+]
