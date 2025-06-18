@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gamory</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="public/icon/logo.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js" defer></script>
@@ -12,7 +13,10 @@
 <body>
     <nav class="navbar">
         <h1>Gamory.</h1>
-        <div class="nav-links">
+        <button class="hamburger" id="hamburgerBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links" id="navLinks">
             <a href="#" id="homeLink">Home</a>
             <a href="#" id="aboutLink">About</a>
             <a href="#" id="gamesLink">Games</a>
@@ -33,7 +37,7 @@
             </video>
             <div class="hero-overlay"></div>
             <h1>Welcome to Gamory.</h1>
-            <p>Discover the best PC games at unbeatable prices. Start your gaming adventure today!</p>
+            <p>Temukan game favoritmu, dari rilisan terbaru hingga klasik legendaris. Proses mudah, aman, dan 100% legal. Saatnya upgrade pengalaman gaming-mu! 🎮</p>
             <button onclick="document.getElementById('featuredGames').scrollIntoView({behavior: 'smooth'})">Browse Games</button>
         </section>
 
@@ -41,9 +45,9 @@
         <section class="about">
             <div class="about-content">
                 <h2>About Gamory</h2>
-                <p>Gamory is your one-stop destination for the latest and greatest PC games. We are passionate about gaming and committed to providing you with an exceptional shopping experience. Explore our vast collection and join our community of gamers today!</p>
+                <p>Gamory adalah toko game digital yang menyediakan game original untuk PC dan konsol. Dengan proses cepat, harga bersahabat, dan layanan terpercaya, kami hadir untuk membuat pengalaman belanja game jadi lebih mudah dan aman.</p>
             </div>
-            <img src="public/icon/logo.png" class="about-image">
+            <img src="public/icon/logo.png" alt="Gamory Logo" class="about-image">
         </section>
 
         <!-- Featured Games Section -->
@@ -56,31 +60,40 @@
         <!-- Testimonials Section -->
         <section class="testimonials">
             <h2>What Our Customers Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p>"Gamory has an amazing selection of games at great prices. The checkout process was smooth and fast!"</p>
-                    <h4>- Alex Johnson</h4>
-                </div>
-                <div class="testimonial-card">
-                    <p>"I love the user-friendly interface and quick delivery. My go-to place for PC games!"</p>
-                    <h4>- Sarah Lee</h4>
-                </div>
-                <div class="testimonial-card">
-                    <p>"Fantastic customer service and a huge variety of games. Highly recommend Gamory!"</p>
-                    <h4>- Michael Chen</h4>
-                </div>
-            </div>
+            <div class="testimonial-grid" id="testimonialGrid"></div>
         </section>
 
         <!-- Contact Us Section -->
-        <section class="contact">
-            <h2>Contact Us</h2>
-            <p>Have questions? Get in touch with us!</p>
-            <div class="contact-form">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button>Send Message</button>
+        <section class="contact" id="contactSection">
+            <h2>Level Up Your Connection!</h2>
+            <p class="tagline">Punya pertanyaan, saran, atau butuh bantuan? Tim Gamory siap membantu! 🚀</p>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <div class="input-group">
+                        <input type="text" id="contactName" placeholder="Your Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="contactEmail" placeholder="Your Email" required>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="contactMessage" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button id="contactSubmit">Send Message</button>
+                    <p id="contactStatus" class="status-message"></p>
+                </div>
+                <div class="contact-info">
+                    <h3>Join Our Gaming Community</h3>
+                    <p>Connect with us on social media or reach out directly!</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a href="https://discord.com" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+                    </div>
+                    <div class="contact-details">
+                        <p><i class="fas fa-envelope"></i> support@gamory.com</p>
+                        <p><i class="fas fa-phone"></i> +1-800-GAMORY</p>
+                    </div>
+                </div>
             </div>
         </section>
     </div>

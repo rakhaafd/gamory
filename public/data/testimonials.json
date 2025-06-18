@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Alex Johnson",
+    "comment": "Gamory punya pilihan game yang luar biasa dengan harga yang bersahabat. Proses checkout-nya juga cepat dan lancar!",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Sarah Lee",
+    "comment": "Saya suka tampilan situsnya yang ramah pengguna dan pengiriman kode yang cepat. Jadi tempat andalan saya untuk beli game PC!",
+    "rating": 4
+  },
+  {
+    "id": 3,
+    "name": "Michael Chen",
+    "comment": "Layanan pelanggannya luar biasa, dan pilihan gamenya sangat banyak. Sangat merekomendasikan Gamory!",
+    "rating": 5
+  }
+]

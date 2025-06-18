@@ -1,9 +1,7 @@
-// Local storage for cart and login state
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn')) || false;
-let games = []; // Store fetched game data
+let games = [];
 
-// DOM elements
 const homeSection = document.getElementById('homeSection');
 const productsGrid = document.getElementById('productsGrid');
 const fetchError = document.getElementById('fetchError');
@@ -36,6 +34,10 @@ const aboutLink = document.getElementById('aboutLink');
 const gamesLink = document.getElementById('gamesLink');
 const testimonyLink = document.getElementById('testimonyLink');
 const contactLink = document.getElementById('contactLink');
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+const contactSubmit = document.getElementById('contactSubmit');
+const contactStatus = document.getElementById('contactStatus');
 
 // SweetAlert2 configuration
 const swalConfig = {
@@ -51,7 +53,6 @@ const swalConfig = {
     iconColor: '#a6e3a1' // --green
 };
 
-// Inject SweetAlert2 custom styles
 const style = document.createElement('style');
 style.innerHTML = `
     .swal-popup {
@@ -75,7 +76,6 @@ style.innerHTML = `
 `;
 document.head.appendChild(style);
 
-// Fetch games data
 async function fetchGames() {
     try {
         const response = await fetch('public/data/games.json');
@@ -91,14 +91,42 @@ async function fetchGames() {
     }
 }
 
-// Initialize page
+async function fetchTestimonials() {
+    try {
+        const response = await fetch('public/data/testimonials.json');
+        if (!response.ok) throw new Error('Failed to fetch testimonials');
+        const testimonials = await response.json();
+        renderTestimonials(testimonials);
+    } catch (error) {
+        console.error('Testimonial fetch error:', error);
+    }
+}
+
+function renderTestimonials(testimonials) {
+    const testimonialGrid = document.getElementById('testimonialGrid');
+    testimonialGrid.innerHTML = '';
+    testimonials.forEach(testimonial => {
+        const card = document.createElement('div');
+        card.className = 'testimonial-card';
+        const stars = Array(5).fill().map((_, i) => 
+            `<i class="fa${i < testimonial.rating ? 's' : 'r'} fa-star${i < testimonial.rating ? '' : ' empty'}"></i>`
+        ).join('');
+        card.innerHTML = `
+            <div class="stars-container">${stars}</div>
+            <p>"${testimonial.comment}"</p>
+            <h4>- ${testimonial.name}</h4>
+        `;
+        testimonialGrid.appendChild(card);
+    });
+}
+
 async function init() {
     updateLoginState();
     await fetchGames();
+    await fetchTestimonials();
     renderCart();
 }
 
-// Update login state
 function updateLoginState() {
     if (isLoggedIn) {
         loginLink.style.display = 'none';
@@ -111,7 +139,6 @@ function updateLoginState() {
     }
 }
 
-// Render products
 function renderProducts() {
     productsGrid.innerHTML = '';
     games.forEach((game, index) => {
@@ -137,7 +164,6 @@ function renderProducts() {
     });
 }
 
-// Add to cart with SweetAlert2
 async function addToCart(gameId) {
     const game = games.find(g => g.id === gameId);
     const cartItem = cart.find(item => item.id === gameId);
@@ -157,7 +183,6 @@ async function addToCart(gameId) {
     cartSidebar.classList.add('active');
 }
 
-// Render cart
 function renderCart() {
     cartItems.innerHTML = '';
     let total = 0;
@@ -177,7 +202,6 @@ function renderCart() {
     cartTotal.textContent = `Total: $${total.toFixed(2)}`;
 }
 
-// Update cart quantity
 function updateQuantity(gameId, change) {
     const cartItem = cart.find(item => item.id === gameId);
     if (cartItem) {
@@ -190,7 +214,6 @@ function updateQuantity(gameId, change) {
     }
 }
 
-// Open game details modal
 function openModal(index) {
     if (games.length > 0) {
         modalImage.src = games[index].image;
@@ -207,19 +230,16 @@ function openModal(index) {
     }
 }
 
-// Close game details modal
 function closeModal() {
     gameModal.classList.remove('active');
 }
 
-// Modal overlay click to close
 gameModal.addEventListener('click', (event) => {
     if (event.target === gameModal) {
         closeModal();
     }
 });
 
-// Simulate async payment process with callbacks
 function processCheckout(callback) {
     setTimeout(() => {
         callback(null, 'Checkout initiated at ' + new Date().toLocaleTimeString());
@@ -244,7 +264,6 @@ function prepareShipping(callback) {
     }, 1000);
 }
 
-// Async/await checkout process with SweetAlert2
 async function handleCheckout() {
     if (!isLoggedIn || cart.length === 0) {
         loginStatus.className = 'status-message error-message fade-in';
@@ -323,7 +342,6 @@ async function handleCheckout() {
     }
 }
 
-// Login simulation
 loginBtn.addEventListener('click', () => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -342,7 +360,6 @@ loginBtn.addEventListener('click', () => {
     }
 });
 
-// Logout
 if (logoutLink) {
     logoutLink.addEventListener('click', (e) => {
         e.preventDefault();
@@ -355,7 +372,6 @@ if (logoutLink) {
     });
 }
 
-// Toggle cart sidebar
 cartLink.addEventListener('click', (e) => {
     e.preventDefault();
     cartSidebar.classList.toggle('active');
@@ -365,14 +381,12 @@ closeCart.addEventListener('click', () => {
     cartSidebar.classList.remove('active');
 });
 
-// Show login section
 loginLink.addEventListener('click', (e) => {
     e.preventDefault();
     loginSection.style.display = 'flex';
     homeSection.style.display = 'none';
 });
 
-// Navbar scroll links
 homeLink.addEventListener('click', (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -395,16 +409,46 @@ testimonyLink.addEventListener('click', (e) => {
 
 contactLink.addEventListener('click', (e) => {
     e.preventDefault();
-    document.querySelector('.contact').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('contactSection').scrollIntoView({ behavior: 'smooth' });
 });
 
-// Checkout
 checkoutBtn.addEventListener('click', handleCheckout);
 
-// Close checkout modal
 modalClose.addEventListener('click', () => {
     checkoutModal.classList.remove('active');
 });
 
-// Initialize
+hamburgerBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburgerBtn.classList.toggle('active');
+    hamburgerBtn.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburgerBtn.classList.remove('active');
+        hamburgerBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+});
+
+contactSubmit.addEventListener('click', () => {
+    const name = document.getElementById('contactName').value;
+    const email = document.getElementById('contactEmail').value;
+    const message = document.getElementById('contactMessage').value;
+    contactStatus.className = 'status-message fade-in';
+    if (name && email && message) {
+        contactStatus.textContent = 'Message sent successfully! We’ll get back to you soon. 🎮';
+        contactStatus.classList.remove('error-message');
+        document.getElementById('contactName').value = '';
+        document.getElementById('contactEmail').value = '';
+        document.getElementById('contactMessage').value = '';
+    } else {
+        contactStatus.className = 'status-message error-message fade-in';
+        contactStatus.textContent = 'Please fill in all fields!';
+    }
+});
+
 init();
